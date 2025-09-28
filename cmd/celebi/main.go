@@ -25,6 +25,11 @@ func main() {
 				},
 				Action: command.AddConfig,
 			},
+			{
+				Name:   "config:list",
+				Usage:  "列出所有数据库连接",
+				Action: command.ListConfig,
+			},
 		},
 	}
 	if err := cmd.Run(context.Background(), os.Args); err != nil {
