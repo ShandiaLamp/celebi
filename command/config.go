@@ -31,3 +31,17 @@ func ListConfig(ctx context.Context, cmd *cli.Command) error {
 	}
 	return nil
 }
+
+func PingConfig(ctx context.Context, cmd *cli.Command) error {
+	conn, err := config.GetConnection(cmd.String("name"))
+	if err != nil {
+		return err
+	}
+	err = config.TestConnection(conn.Driver, conn.DSN)
+	if err != nil {
+		fmt.Println("连接失败:", err)
+	} else {
+		fmt.Println("连接成功")
+	}
+	return nil
+}

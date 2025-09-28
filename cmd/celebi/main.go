@@ -30,6 +30,14 @@ func main() {
 				Usage:  "列出所有数据库连接",
 				Action: command.ListConfig,
 			},
+			{
+				Name:  "config:ping",
+				Usage: "测试数据库连接连通性",
+				Flags: []cli.Flag{
+					&cli.StringFlag{Name: "name", Usage: "连接名称", Required: false},
+				},
+				Action: command.PingConfig,
+			},
 		},
 	}
 	if err := cmd.Run(context.Background(), os.Args); err != nil {
