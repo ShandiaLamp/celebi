@@ -22,3 +22,12 @@ func AddConfig(ctx context.Context, cmd *cli.Command) error {
 	fmt.Println("添加连接成功:", name)
 	return nil
 }
+
+func ListConfig(ctx context.Context, cmd *cli.Command) error {
+	cfg, _ := config.Load()
+	fmt.Println("Default:", cfg.Default)
+	for name, conn := range cfg.Connections {
+		fmt.Printf("- %s: %s (%s)\n", name, conn.DSN, conn.Driver)
+	}
+	return nil
+}
