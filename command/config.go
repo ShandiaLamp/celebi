@@ -25,7 +25,6 @@ func AddConfig(ctx context.Context, cmd *cli.Command) error {
 
 func ListConfig(ctx context.Context, cmd *cli.Command) error {
 	cfg, _ := config.Load()
-	fmt.Println("Default:", cfg.Default)
 	for name, conn := range cfg.Connections {
 		fmt.Printf("- %s: %s (%s)\n", name, conn.DSN, conn.Driver)
 	}
